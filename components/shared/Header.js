@@ -13,8 +13,8 @@ class Header extends React.Component {
         <Link href="/about">
           <a>About </a>
         </Link>
-        <Link href="/portfolio">
-          <a>Portfolio </a>
+        <Link href="/portfolios">
+          <a>Portfolios </a>
         </Link>
         <Link href="/blogs">
           <a>Blogs </a>
