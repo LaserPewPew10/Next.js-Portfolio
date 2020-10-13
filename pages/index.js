@@ -2,6 +2,7 @@ import React from "react";
 import BaseLayout from "../components/layouts/BaseLayout";
 import { Container, Row, Col } from "reactstrap";
 import Typed from "react-typed";
+import BasePage from "../components/BasePage";
 
 class Index extends React.Component {
   constructor(props) {
@@ -22,7 +23,6 @@ class Index extends React.Component {
           <div className="background-image">
             <img src="/images/background-index.png" />
           </div>
-
           <Container>
             <Row>
               <Col md="6">
