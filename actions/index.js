@@ -13,3 +13,11 @@ export const useGetPosts = () => {
   const { data, error, ...rest } = useSWR("/api/v1/posts", fetcher);
   return { data, error, loading: !data && !error, ...rest };
 };
+
+export const useGetPostById = (id) => {
+  const { data, error, ...rest } = useSWR(
+    id ? `/api/v1/posts/${id}` : null,
+    fetcher
+  );
+  return { data, error, loading: !data && !error, ...rest };
+};
