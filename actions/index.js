@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export const useGetPosts = () => {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getPosts() {
@@ -15,11 +16,13 @@ export const useGetPosts = () => {
         setPosts(result);
       }
 
+      setLoading(false);
+
       setPosts(result);
     }
 
     getPosts();
   }, []);
 
-  return { posts, error };
+  return { posts, error, loading };
 };
