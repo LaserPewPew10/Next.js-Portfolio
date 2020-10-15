@@ -25,7 +25,9 @@ const LoginLink = () => (
 );
 
 const LogoutLink = () => (
-  <span className="nav-link port-navbar-link clickable">Logout</span>
+  <a className="nav-link port-navbar-link" href="/api/v1/logout">
+    Logout
+  </a>
 );
 
 const Header = ({ user, loading }) => {
