@@ -19,7 +19,7 @@ const BsNavBrand = () => (
 );
 
 const LoginLink = () => (
-  <a classname="nav-link port-navbar-link" href="api/v1/login">
+  <a className="nav-link port-navbar-link" href="/api/v1/login">
     Login
   </a>
 );
