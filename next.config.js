@@ -7,4 +7,7 @@ module.exports = {
     config.plugins.push(new Dotenv({ silent: true }));
     return config;
   },
+  env: {
+    AUTH0_NAMESPACE: process.env.AUTH0_NAMESPACE,
+  },
 };
