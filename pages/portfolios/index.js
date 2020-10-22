@@ -1,33 +1,37 @@
 import BaseLayout from "@/components/layouts/BaseLayout";
 import BasePage from "@/components/BasePage";
+import { Row, Col } from "reactstrap";
 import Link from "next/link";
-import { useGetPosts } from "@/actions";
 import { useGetUser } from "@/actions/user";
+import PortfolioApi from "@/lib/api/portfolios";
+import PortfolioCard from "@/components/PortfolioCard";
 
-const Portfolios = () => {
-  const { data, loading, error } = useGetPosts();
+const Portfolios = ({ portfolios }) => {
   const { data: dataU, loading: loadingU } = useGetUser();
-
-  const renderPosts = (posts) => {
-    return posts.map((post) => (
-      <li key={post.id} style={{ fontSize: "20px" }}>
-        <Link as={`/portfolios/${post.id}`} href="/portfolios/[id]">
-          <a>{post.title}</a>
-        </Link>
-      </li>
-    ));
-  };
 
   return (
     <BaseLayout user={dataU} loading={loadingU}>
-      <BasePage>
-        <h1>I am Portfolio Page</h1>
-        {loading && <p>Loading Data...</p>}
-        {data && <ul>{renderPosts(data)}</ul>}
-        {error && <div className="alert alert-danger">{error.message}</div>}
+      <BasePage className="portfolio-page">
+        <Row>
+          {portfolios.map((portfolio) => (
+            <Col key={portfolio._id} md="4">
+              <PortfolioCard portfolio={portfolio} />
+            </Col>
+          ))}
+        </Row>
       </BasePage>
     </BaseLayout>
   );
 };
+// this function is called during the build time
+// Improved performace of page,
+// It will create static page with dynamic data
+export async function getStaticProps() {
+  const json = await new PortfolioApi().getAll();
+  const portfolios = json.data;
+  return {
+    props: { portfolios },
+  };
+}
 
 export default Portfolios;

@@ -29,7 +29,7 @@ const Index = () => {
                     <div className="hero-section-content">
                       <h2> Full Stack Web Developer </h2>
                       <div className="hero-section-content-intro">
-                        Have a look at my portfolio and job history.
+                        Have a look at my portfolio!
                       </div>
                     </div>
                     <img className="image" src="/images/section-1.png" />
@@ -43,9 +43,9 @@ const Index = () => {
             <Col md="6" className="hero-welcome-wrapper">
               <div className="hero-welcome-text">
                 <h1>
-                  Welcome to the portfolio website of Filip Jerga. Get informed,
-                  collaborate and discover projects I was working on through the
-                  years!
+                  Welcome to the portfolio website of Justin Ramirez. Get
+                  informed, collaborate and discover projects I was working on
+                  through the years!
                 </h1>
               </div>
               <Typed
