@@ -20,6 +20,7 @@ const Portfolio = ({ portfolio }) => {
 
 //   return { props: { portfolio } };
 // }
+
 // This function is executed at the build time
 export async function getStaticPaths() {
   const json = await new PortfolioApi().getAll();
