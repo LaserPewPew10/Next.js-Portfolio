@@ -1,7 +1,7 @@
 import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-
+// TODO: LOOK INTO WHY THE NEW PAGE ISN'T SHOWING UP AFTER SIGNING IN
 const PortfolioForm = ({ onSubmit }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -101,11 +101,37 @@ const PortfolioForm = ({ onSubmit }) => {
         <label htmlFor="endDate">End Date</label>
         <div>
           <DatePicker
+            disabled={!endDate}
             showYearDropdown
             selected={endDate}
             onChange={handleDateChange("endDate", setEndDate)}
           />
         </div>
+      </div>
+      <div className="form-group">
+        {endDate && (
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() => handleDateChange("endDate", setEndDate)(null)}
+          >
+            No End Date
+          </button>
+        )}
+        {!endDate && (
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={() =>
+              handleDateChange(
+                "endDate",
+                setEndDate
+              )(new Date(new Date().setHours(0, 0, 0, 0)))
+            }
+          >
+            Set End Date
+          </button>
+        )}
       </div>
       <button type="submit" className="btn btn-primary">
         Create
