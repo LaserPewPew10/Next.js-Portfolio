@@ -29,6 +29,7 @@ const PortfolioEdit = ({ user }) => {
                 initialData={initialData}
               />
             )}
+            {error && <div className="alert alert-danger mt-2">{error}</div>}
           </Col>
         </Row>
       </BasePage>
