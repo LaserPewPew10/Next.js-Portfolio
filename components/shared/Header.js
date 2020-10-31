@@ -1,13 +1,23 @@
 import React, { useState } from "react";
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  Nav,
+  NavItem,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 
 import Link from "next/link";
 
 const BsNavLink = (props) => {
-  const { title, href } = props;
+  const { title, href, className = "" } = props;
   return (
     <Link href={href}>
-      <a className="nav-link port-navbar-link">{title}</a>
+      <a className={`nav-link port-navbar-link${className}`}>{title}</a>
     </Link>
   );
 };
@@ -29,6 +39,31 @@ const LogoutLink = () => (
     Logout
   </a>
 );
+
+const AdminMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <Dropdown
+      className="port-navbar-link port-dropdown-menu"
+      nav
+      isOpen={isOpen}
+      toggle={() => setIsOpen(!isOpen)}
+    >
+      <DropdownToggle className="port-dropdown-toggle" nav carret>
+        Admin
+      </DropdownToggle>
+      <DropdownMenu>
+        <DropdownItem>
+          <BsNavLink
+            className="port-dropdown-item"
+            href="/portfolios/new"
+            title="Create Portfolio"
+          />
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+  );
+};
 
 const Header = ({ user, loading, className }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,9 +112,12 @@ const Header = ({ user, loading, className }) => {
           {!loading && (
             <>
               {user && (
-                <NavItem className="port-navbar-item">
-                  <LogoutLink />
-                </NavItem>
+                <>
+                  <AdminMenu />
+                  <NavItem className="port-navbar-item">
+                    <LogoutLink />
+                  </NavItem>
+                </>
               )}
               {!user && (
                 <NavItem className="port-navbar-item">

@@ -3,12 +3,10 @@
   width: 100%;
   z-index: 15;
   padding: 40px;
-
   &.with-bg {
     background-color: #2c3e50;
     padding: 30px;
   }
-
   .port-navbar {
     &-brand {
       color: white;
@@ -17,27 +15,39 @@
       letter-spacing: 1px;
       font-weight: bold;
     }
-
     &-item {
       margin-left: 10px;
       margin-right: 10px;
     }
-
     &-link {
       color: white;
       font-weight: bold;
       letter-spacing: 0.8px;
       font-size: 18px;
       text-transform: uppercase;
-
       &.active {
         color: #dba919;
       }
-
       &:hover,
       &:focus {
         color: #dba919;
       }
+    }
+  }
+
+  .port-dropdown-menu {
+    .port-dropdown-item {
+      color: #4e4e4e;
+
+      &.active {
+        color: #dba919;
+      }
+    }
+
+    .port-dropdown-toggle {
+      color: white;
+      margin-left: 10px;
+      margin-right: 10px;
     }
   }
 }
