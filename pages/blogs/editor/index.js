@@ -16,7 +16,7 @@ const BlogEditor = ({ user, loading }) => {
   }
 
 
-  if (error) { toast.error(error.message); }
+  if (error) { toast.error(error); }
   
   return (
     <BaseLayout user={user} loading={loading}>
