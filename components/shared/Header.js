@@ -18,7 +18,7 @@ const BsNavLink = (props) => {
   const { title, href, className = "" } = props;
   return (
     <Link href={href}>
-      <a className={`nav-link port-navbar-link${className}`}>{title}</a>
+      <a className={`nav-link port-navbar-link ${className}`}>{title}</a>
     </Link>
   );
 };
