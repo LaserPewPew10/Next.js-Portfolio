@@ -15,7 +15,7 @@ const BlogItem = ({blog}) =>
         </a>
       </Link>
       <p className="post-meta">Posted by
-        <a href="#"> Filip Jerga </a>
+        <a href="#"> Justin Ramirez </a>
         - {moment(blog.createdAt).format('LLLL')}
         {/* {blog.createdAt} */}
         {/* {blog.createdAt.split('T')[0].split("-").join(":")} */}
