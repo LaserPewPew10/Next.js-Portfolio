@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container } from "reactstrap";
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -22,6 +23,7 @@ const BasePage = (props) => {
 
 
     const pageType = indexPage ? 'index-page' : 'base-page';
+    const Wrapper = noWrapper ? React.Fragment : Container;
   return (
     <>
       <Head>
@@ -42,18 +44,10 @@ const BasePage = (props) => {
           href={`${process.env.BASE_URL}${canonicalPath ? canonicalPath : router.asPath}`} />
       </Head>
       <div className={`${pageType} ${className}`}>
-      { noWrapper &&
-          <>
-            { header && <PageHeader header={header} /> }
-            {children}
-          </>
-        }
-        { !noWrapper &&
-          <Container>
-            { header && <PageHeader header={header} /> }
-            {children}
-          </Container>
-        }
+      <Wrapper>
+          { header && <PageHeader header={header} /> }
+          {children}
+        </Wrapper>
       </div>
     </>
   );
