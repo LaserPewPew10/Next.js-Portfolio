@@ -8,7 +8,8 @@ const CV = () => {
   const { data, loading } = useGetUser();
   return (
     <BaseLayout user={data} loading={loading}>
-      <BasePage>
+        <BasePage
+        title="My Experiences - Justin Ramirez">
       <Row>
         <Col md={{size: 8, offset:2}}>
           <iframe style={{width: "100%", height: "800px"}} src="/software_resume.pdf"></iframe>
