@@ -12,7 +12,8 @@ const Portfolio = ({ portfolio }) => {
     <BaseLayout user={dataU} loading={loadingU}>
        <BasePage
         title={`${portfolio.title} - Justin Ramirez`}
-        header="Portfolio Detail">{JSON.stringify(portfolio)}</BasePage>
+        header="Portfolio Detail"
+        metaDescription={portfolio.description}>{JSON.stringify(portfolio)}</BasePage>
     </BaseLayout>
   );
 };

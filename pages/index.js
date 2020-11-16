@@ -38,7 +38,7 @@ const startAnimation = () => {
       loading={loading}
       navClass="transparent"
       className={`cover ${isFlipping ? 'cover-orange' : 'cover-blue'}`}>
-      <BasePage indexPage title="Portfolio - Filip Jerga">
+      <BasePage indexPage title="Portfolio - Justin Ramirez">
         <div className="main-section">
           <div className="background-image">
             <img src="/images/background-index.png" />
@@ -52,7 +52,7 @@ const startAnimation = () => {
                       <div className="hero-section-content">
                         <h2> Full Stack Web Developer </h2>
                         <div className="hero-section-content-intro">
-                          Have a look at my portfolio and job history.
+                          Have a look at my portfolio!
                         </div>
                       </div>
                       <img className="image" src="/images/section-1.png"/>
@@ -64,7 +64,7 @@ const startAnimation = () => {
                       <div className="hero-section-content">
                         <h2> Full Stack Web Developer </h2>
                         <div className="hero-section-content-intro">
-                          Have a look at my portfolio and job history.
+                          Have a look at my portfolio!
                         </div>
                       </div>
                       <img className="image" src="/images/section-2.png"/>

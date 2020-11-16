@@ -8,7 +8,6 @@ import BlogApi from 'lib/api/blogs';
 
 const Blogs = ({blogs}) => {
   const { data, loading } = useGetUser();
-  debugger
   return (
     <BaseLayout
       navClass="transparent" className="blog-listing-page"

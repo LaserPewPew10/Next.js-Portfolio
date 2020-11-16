@@ -1,4 +1,4 @@
-import { Container, container } from "reactstrap";
+import { Container } from "reactstrap";
 import Head from 'next/head';
 
 const BasePage = (props) => {
@@ -6,7 +6,8 @@ const BasePage = (props) => {
     indexPage,
     className = '',
     header,
-    title = "Portfolio - Filip Jerga",
+    title = "Portfolio - Justin Ramirez",
+    metaDescription="A passionate Full Stack Web Developer leveraging Mechanical Engineering experience for building detailed orientated applications for users on the web.",
     children } = props;
 
 
@@ -14,8 +15,16 @@ const BasePage = (props) => {
   return (
     <>
       <Head>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <title>{title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          key="description"
+          content={metaDescription} />
+        <meta
+          name="title"
+          key="title"
+          content={title} />
       </Head>
       <div className={`${pageType} ${className}`}>
         <Container>
