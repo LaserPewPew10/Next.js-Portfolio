@@ -3,9 +3,15 @@ import BasePage from "@/components/BasePage";
 import { useGetUser } from "@/actions/user";
 import { formatDate } from 'helpers/functions';
 import PortfolioApi from "@/lib/api/portfolios";
+import {useRouter} from 'next/router';
 
 const Portfolio = ({ portfolio }) => {
   const { data: dataU, loading: loadingU } = useGetUser();
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <h1>Your page is getting served</h1>
+  }
 
   return (
     <BaseLayout
@@ -45,13 +51,14 @@ export async function getStaticPaths() {
     };
   });
   // Fallback : false means that "not found pages" will be resolved in 404 page
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
   const json = await new PortfolioApi().getById(params.id);
   const portfolio = json.data;
   return { props: { portfolio } };
+  
 }
 
 export default Portfolio;
