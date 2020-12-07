@@ -4,12 +4,21 @@ import { Row, Col } from 'reactstrap';
 import { useGetUser } from '@/actions/user';
 import { SlateView } from 'slate-simple-editor';
 import Avatar from 'components/shared/Avatar';
+import {useRouter} from 'next/router';
 
 
 import BlogApi from 'lib/api/blogs';
 
 const BlogDetail = ({blog, author}) => {
   const { data, loading } = useGetUser();
+  const router = useRouter();
+
+
+  if (router.isFallback) {
+    return <h1>Your page is getting served</h1>
+  }
+
+
   return (
     <BaseLayout user={data} loading={loading}>
      <BasePage
@@ -35,7 +44,7 @@ const BlogDetail = ({blog, author}) => {
 export async function getStaticPaths() {
   const { data } = await new BlogApi().getAll();
   const paths = data.map(({blog}) => ({params: { slug: blog.slug}}));
-    return { paths, fallback: false};
+    return { paths, fallback: true};
   }
   
   export async function getStaticProps({params}) {
