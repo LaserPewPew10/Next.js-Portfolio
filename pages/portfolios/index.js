@@ -1,13 +1,13 @@
-import { useState } from "react";
-import BaseLayout from "@/components/layouts/BaseLayout";
-import BasePage from "@/components/BasePage";
-import { Row, Col, BUtto, Button } from "reactstrap";
-import { useRouter } from "next/router";
-import { useGetUser } from "@/actions/user";
-import { useDeletePortfolio } from "@/actions/portfolios";
-import PortfolioApi from "@/lib/api/portfolios";
-import PortfolioCard from "@/components/PortfolioCard";
-import { isAuthorized } from "@/utils/auth0";
+import { useState } from 'react';
+import BaseLayout from '@/components/layouts/BaseLayout';
+import BasePage from '@/components/BasePage';
+import { Row, Col, Button } from 'reactstrap';
+import { useRouter } from 'next/router';
+import { useGetUser } from '@/actions/user';
+import { useDeletePortfolio } from '@/actions/portfolios';
+import PortfolioApi from '@/lib/api/portfolios';
+import PortfolioCard from '@/components/PortfolioCard';
+import { isAuthorized } from '@/utils/auth0';
 
 const Portfolios = ({ portfolios: initialPortfolios }) => {
   const router = useRouter();
@@ -18,7 +18,7 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
   const _deletePortfolio = async (e, portfolioId) => {
     e.stopPropagation();
     const isConfirm = confirm(
-      "Are you sure you want to delete this portfolio?"
+      'Are you sure you want to delete this portfolio?'
     );
     if (isConfirm) {
       await deletePortfolio(portfolioId);
@@ -28,27 +28,28 @@ const Portfolios = ({ portfolios: initialPortfolios }) => {
 
   return (
     <BaseLayout user={dataU} loading={loadingU}>
-      <BasePage 
-       title="Newest Portfolios - Justin Ramirez"
-      header="Portfolios" 
-      className="portfolio-page">
+      <BasePage
+        title="Newest Portfolios - Justin Ramirez"
+        header="Portfolio"
+        className="portfolio-page"
+      >
         <Row>
           {portfolios.map((portfolio) => (
             <Col
               key={portfolio._id}
               onClick={() =>
-                router.push("/portfolios/[id]", `/portfolios/${portfolio._id}`)
+                router.push('/portfolios/[id]', `/portfolios/${portfolio._id}`)
               }
               md="4"
             >
               <PortfolioCard portfolio={portfolio}>
-                {dataU && isAuthorized(dataU, "admin") && (
+                {dataU && isAuthorized(dataU, 'admin') && (
                   <>
                     <Button
                       onClick={(e) => {
                         e.stopPropagation();
                         router.push(
-                          "/portfolios/[id]/edit",
+                          '/portfolios/[id]/edit',
                           `/portfolios/${portfolio._id}/edit`
                         );
                       }}
@@ -81,7 +82,7 @@ export async function getStaticProps() {
   const portfolios = json.data;
   return {
     props: { portfolios },
-    revalidate: 1
+    revalidate: 1,
   };
 }
 

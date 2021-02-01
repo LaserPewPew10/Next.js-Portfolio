@@ -1,43 +1,41 @@
 import { useState, useRef, useEffect } from 'react';
-import BaseLayout from "@/components/layouts/BaseLayout";
-import { Container, Row, Col } from "reactstrap";
-import Typed from "react-typed";
-import { useGetUser } from "@/actions/user";
+import BaseLayout from '@/components/layouts/BaseLayout';
+import { Container, Row, Col } from 'reactstrap';
+import Typed from 'react-typed';
+import { useGetUser } from '@/actions/user';
 import BasePage from '@/components/BasePage';
 
 const ROLES = [
-  "Developer",
-  "Tech Lover",
-  "Team Player",
-  "Course Creator",
-  "React.js",
-  "Angular",
+  'Developer',
+  'Tech Lover',
+  'Team Player',
+  'Passionate',
+  'Thinker',
 ];
 const Index = () => {
   const [isFlipping, setIsFlipping] = useState(false);
   const { data, loading } = useGetUser();
 
-const flipInterval = useRef();
+  const flipInterval = useRef();
 
-useEffect(() => {
-  startAnimation();
-  return () => flipInterval.current && clearInterval(flipInterval.current)
-}, []);
+  useEffect(() => {
+    startAnimation();
+    return () => flipInterval.current && clearInterval(flipInterval.current);
+  }, []);
 
-const startAnimation = () => {
-  flipInterval.current = setInterval(() => {
-    setIsFlipping(prevFlipping => !prevFlipping);
-  }, 20000);
-}
-
-
+  const startAnimation = () => {
+    flipInterval.current = setInterval(() => {
+      setIsFlipping((prevFlipping) => !prevFlipping);
+    }, 20000);
+  };
 
   return (
     <BaseLayout
       user={data}
       loading={loading}
       navClass="transparent"
-      className={`cover ${isFlipping ? 'cover-orange' : 'cover-blue'}`}>
+      className={`cover ${isFlipping ? 'cover-orange' : 'cover-blue'}`}
+    >
       <BasePage indexPage title="Portfolio - Justin Ramirez">
         <div className="main-section">
           <div className="background-image">
@@ -49,7 +47,7 @@ const startAnimation = () => {
                 <div className="hero-section">
                   <div className={`flipper ${isFlipping ? 'isFlipping' : ''}`}>
                     <div className="front">
-                    <div className="image image-1">
+                      <div className="image image-1">
                         <div className="hero-section-content">
                           <h2> Full Stack Web Developer </h2>
                           <div className="hero-section-content-intro">
@@ -62,11 +60,11 @@ const startAnimation = () => {
                       </div>
                     </div>
                     <div className="back">
-                    <div className="image image-2">
+                      <div className="image image-2">
                         <div className="hero-section-content">
-                          <h2>React and Next is Amazing!</h2>
+                          <h2> Full Stack Web Developer </h2>
                           <div className="hero-section-content-intro">
-                            Software developer ready for a project of any type!
+                            Have a look at my portfolio!
                           </div>
                         </div>
                       </div>
@@ -76,12 +74,12 @@ const startAnimation = () => {
                     </div>
                   </div>
                 </div>
-                </Col>
+              </Col>
               <Col md="6" className="hero-welcome-wrapper">
                 <div className="hero-welcome-text">
                   <h1>
-                    Welcome to the portfolio website of Justin Ramirez.
-                    Get informed, collaborate and discover projects I was working on through the years!
+                    Welcome to my website! Get informed, collaborate and
+                    discover projects I have been working on!
                   </h1>
                 </div>
                 <Typed
@@ -96,9 +94,7 @@ const startAnimation = () => {
                   cursorChar="|"
                 />
                 <div className="hero-welcome-bio">
-                  <h1>
-                    Let's take a look on my work.
-                  </h1>
+                  <h1>Let's take a look at my work.</h1>
                 </div>
               </Col>
             </Row>
