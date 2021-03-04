@@ -13,7 +13,7 @@ const CV = () => {
           <Col md={{ size: 8, offset: 2 }}>
             <iframe
               style={{ width: '100%', height: '800px' }}
-              src="/Justin Ramirez.pdf"
+              src="/Justin_Ramirez.pdf"
             ></iframe>
           </Col>
         </Row>
